@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+
+<!-- Meta Data -->
+<head>
+	<meta charset="utf-8">
+	<title>Citadel Data Open - Team 2</title>
+	<link href="./css/pure-min.css" rel="stylesheet">
+	<link href="./css/main.css" rel="stylesheet">
+</head>
+
+<!-- Body -->
+<body>
+
+	<!-- Intro Text -->
+	<div>
+	    <h1>Exploring Economics, Demographics, and Education in the U.S.</h1>
+	    <hr>
+	    <p class="intro">Below is an interactive scatter plot of <a href="https://cepa.stanford.edu/seda/overview">SEDA database</a> by school district.  Each point represents one of the 500 largest school districts by total number of students in the U.S.  Explore the dataset by selecting features on the left panel.</p>
+	    <hr>
+	</div>
+
+	<!-- Left Quarter -->
+	<div class="pure-g">
+	<div class="pure-u-1-4">
+		<form id="scatter_control" class="pure-form pure-form-aligned">
+		    <fieldset>
+		    	<p>Select which year of the data to use.</p>
+		        <div class="pure-control-group">
+		            <label for="name">Year</label>
+		            <select id="year">
+			            <option>2009</option>
+			            <option>2010</option>
+			            <option>2011</option>
+			            <option>2012</option>
+			            <option>2013</option>
+			        </select>
+		        </div>
+		        <p>Define axis.</p>
+		        <div class="pure-control-group">
+		            <label for="x_axis">X Axis</label>
+		            <select id="x_axis">
+			            <option>Information White Black</option>
+			            <option>Information White Hispanic</option>
+			            <option>Information Free Lunch</option>
+			            <option>Per Student Expenditures</option>
+			            <option>Per Student Revenue</option>
+			            <option>Percentage Students in Charter</option>
+			            <option>Percent Bachelors</option>
+			            <option>Percent Poverty</option>
+			            <option>Percent SNAP</option>
+			            <option>Households with Children</option>
+			            <option>Percent Unemployed</option>
+			            <option>Income at 50th Percentile</option>
+			            <option>Gini Coefficient</option>
+			            <option>Percent Males in Workforce</option>
+			            <option>Percent Females in Workforce</option>
+			        </select>
+		        </div>
+		        <div class="pure-control-group">
+		            <label for="y_axis">Y Axis</label>
+		            <select id="y_axis">
+		            	<option>Information White Black</option>
+			            <option>Information White Hispanic</option>
+			            <option>Information Free Lunch</option>
+			            <option>Per Student Expenditures</option>
+			            <option>Per Student Revenue</option>
+			            <option>Percentage Students in Charter</option>
+			            <option>Percent Bachelors</option>
+			            <option>Percent Poverty</option>
+			            <option>Percent SNAP</option>
+			            <option>Households with Children</option>
+			            <option>Percent Unemployed</option>
+			            <option>Income at 50th Percentile</option>
+			            <option>Gini Coefficient</option>
+			            <option>Percent Males in Workforce</option>
+			            <option>Percent Females in Workforce</option>
+			        </select>
+		        </div>
+		        <p>Select features to use.</p>
+		        <div class="pure-control-group">
+		            <label for="radius">Radius</label>
+		            <select id="radius">
+			            <option>Native American</option>
+			            <option>Asian</option>
+			            <option>Hispanic</option>
+			            <option>Black</option>
+			            <option>White</option>
+			            <option>Free Lunch</option>
+			            <option>Number of Students</option>
+			            <option>Number of Schools</option>
+			            <option>Number of Charters</option>
+			            <option>Number ELL</option>
+			            <option>Number of Teachers</option>
+			            <option>Teacher Student Ratio</option>
+			        </select>
+		        </div>
+		        <div class="pure-control-group">
+		            <label for="color">Color</label>
+		            <select id="color">
+			            <option>urban</option>
+			            <option>State</option>
+			        </select>
+		        </div>
+		        <p>Filter by state.</p>
+		        <div class="pure-control-group">
+		            <label for="state">State</label>
+		            <select id="state">
+		            	<option>Use All</option>
+						<option>AL</option>
+						<option>AK</option>
+						<option>AZ</option>
+						<option>AR</option>
+						<option>CA</option>
+						<option>CO</option>
+						<option>CT</option>
+						<option>DE</option>
+						<option>FL</option>
+						<option>GA</option>
+						<option>HI</option>
+						<option>ID</option>
+						<option>IL</option>
+						<option>IN</option>
+						<option>IA</option>
+						<option>KS</option>
+						<option>KY</option>
+						<option>LA</option>
+						<option>ME</option>
+						<option>MD</option>
+						<option>MA</option>
+						<option>MI</option>
+						<option>MN</option>
+						<option>MS</option>
+						<option>MO</option>
+						<option>MT</option>
+						<option>NE</option>
+						<option>NV</option>
+						<option>NH</option>
+						<option>NJ</option>
+						<option>NM</option>
+						<option>NY</option>
+						<option>NC</option>
+						<option>ND</option>
+						<option>OH</option>
+						<option>OK</option>
+						<option>OR</option>
+						<option>PA</option>
+						<option>RI</option>
+						<option>SC</option>
+						<option>SD</option>
+						<option>TN</option>
+						<option>TX</option>
+						<option>UT</option>
+						<option>VT</option>
+						<option>VA</option>
+						<option>WA</option>
+						<option>WV</option>
+						<option>WI</option>
+						<option>WY</option>
+			        </select>
+		        </div>
+		        <p>Hover on a point for its name.</p>
+		    </fieldset>
+		</form>
+	</div>
+
+	<!-- Right Half -->
+	<div id="districts" class="pure-u-3-4"></div>
+
+	</div>
+
+	<hr>
+    <p class="intro">Below is an interactive choropleth plot of <a href="https://cepa.stanford.edu/seda/overview">SEDA database</a> by county.  Explore the dataset by selecting features on the left panel to map.  Grey counties represent missing data.</p>
+    <hr>
+    <div class="pure-g">
+		<div class="pure-u-1-4">
+			<form id="map_control" class="pure-form pure-form-aligned">
+		    <fieldset>
+		    	<p>Select which year of the data to use.</p>
+		        <div class="pure-control-group">
+		            <label for="year_map">Year</label>
+		            <select id="year_map">
+			            <option>2009</option>
+			            <option>2010</option>
+			            <option>2011</option>
+			            <option>2012</option>
+			            <option>2013</option>
+			        </select>
+		        </div>
+		        <p>Define property to map.</p>
+		        <div class="pure-control-group">
+		            <label for="feature">Feature</label>
+		            <select id="feature">
+			            <option>Mean_ELA</option>
+			            <option>Mean_SE_ELA</option>
+			            <option>Mean_Math</option>
+			            <option>Mean_SE_Math</option>
+			            <option>nsch</option>
+			            <option>tottch</option>
+			            <option>totenrl</option>
+			            <option>ppexp_inst</option>
+			            <option>perfrl</option>
+			            <option>population_sum</option>
+			            <option>households_sum</option>
+			            <option>weightedIncome_sum</option>
+			            <option>AgeSE</option>
+			            <option>IncomeSE</option>
+			            <!-- <option>cluster 3</option> -->
+			            <!-- <option>cluster 6</option> -->
+			        </select>
+		        </div>
+		        <p>Click on a state to zoom in or zoom out.</p>
+		    </fieldset>
+		</form>
+		</div>
+		<div id="chloropleth" class="pure-u-3-4"></div>
+	</div>
+
+	<hr>
+    <p class="intro">Below is an interactive force based laout of <a href="https://www.irs.gov/statistics/soi-tax-stats-migration-data">SOI Migration</a> databse by state.  Each node is a state and links represent the number of residents who moved from one state to the other.  Explore the dataset by selecting features on the left panel and drag and drop.</p>
+    <hr>
+    <div class="pure-g">
+    	<div class="pure-u-1-4">
+			<form id="cluster_control" class="pure-form pure-form-aligned">
+		    <fieldset>
+<!-- 		    	<p>Define Network Structure.</p>
+		        <div class="pure-control-group">
+		            <label for="node">Node</label>
+		            <select id="node">
+			            <option>State</option>
+			            <option>County</option>
+			        </select>
+		        </div>
+		        <div class="pure-control-group">
+		            <label for="link">Link</label>
+		            <select id="link">
+			            <option>Households</option>
+			            <option>Inividuals</option>
+			        </select>
+		        </div> -->
+		        <p>Select features to use.</p>
+		        <div class="pure-control-group">
+		            <label for="radius_cluster">Radius</label>
+		            <select id="radius_cluster">
+		            	<option>equal</option>
+			            <option>population</option>
+			            <option>income</option>
+			        </select>
+		        </div>
+		        <div class="pure-control-group">
+		            <label for="color_cluster">Color</label>
+		            <select id="color_cluster">
+			            <option>state</option>
+			            <option>region</option>
+			            <option>division</option>
+			        </select>
+		        </div>
+		        <p>Double click on a node for its neighbors.</p>
+		    </fieldset>
+		</form>
+		</div>
+		<div id="cluster" class="pure-u-3-4"></div>
+	</div>
+
+<!-- load d3 -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- load jquery -->
+<script src="./js/jquery.js"></script>
+<!-- load d3 -->
+<script src="./js/d3.tip.v0.6.3.js"></script>
+<!-- load data -->
+<script src="./data/districts.js"></script>
+<!-- load map viz -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<!-- load our vizualization code -->
+<script src="./js/visualization.js"></script>
+</body>
+</html>
+
+
+
